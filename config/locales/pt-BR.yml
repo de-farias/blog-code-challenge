@@ -1,0 +1,49 @@
+pt-BR:
+  activerecord:
+    models:
+      post: 'Post'
+    attributes:
+      post:
+        title: 'Título'
+        raw_content: 'Conteúdo'
+    errors:
+      models:
+        errors_defaults: &errors_defaults
+          blank: 'não pode ficar em branco'
+          required: 'não pode ficar em branco'
+          taken: 'já está em uso'
+        post:
+          attributes:
+            title:
+              <<: *errors_defaults
+            raw_content:
+              <<: *errors_defaults
+  posts:
+    default: &default
+      confirm_deletion: 'Deseja realmente apagar este registro'
+      title: 'Título'
+      raw_content: 'Conteúdo'
+    create:
+      failed_to_create_post: 'Não foi possível cadastrar o post'
+      post_created: 'Post cadastrado com sucesso'
+    destroy:
+      failed_to_destroy_post: 'Não foi possível remover o post'
+      post_destroyed: 'Post removido com sucesso'
+    edit:
+      <<: *default
+      page_title: 'Editar Post'
+    form:
+      <<: *default
+      return: 'Voltar'
+      submit: 'Salvar'
+    index:
+      <<: *default
+      page_title: 'Posts'
+    new:
+      <<: *default
+      page_title: 'Novo Post'
+    show:
+      <<: *default
+    update:
+      failed_to_update_post: 'Não foi possível editar o post'
+      post_updated: 'Post editado com sucesso'

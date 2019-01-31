@@ -1,0 +1,17 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    .alert.alert-danger
+      - for error in @post.errors.full_messages
+        p = error
+
+  div
+    = f.label :title
+    = f.text_field :title, autofocus: true
+
+  div
+    = f.label :raw_content
+    = f.text_area :raw_content
+
+  div
+    button type='submit' = t('.submit')
+    = link_to t('.return'), :back
