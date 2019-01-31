@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.5'
 
+gem 'slim-rails', '~>3.2'
+
 group :development, :test do
   # Byebug is a Ruby debugger
   gem 'byebug', '~> 9.1'
