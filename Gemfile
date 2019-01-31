@@ -38,6 +38,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.5'
 
+gem 'jquery-rails', '~> 4.3'
+
+gem 'semantic-ui-sass', '~> 2.4', '>= 2.4.0.1'
+
 gem 'slim-rails', '~>3.2'
 
 group :development, :test do
