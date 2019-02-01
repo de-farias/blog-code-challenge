@@ -18,6 +18,11 @@ pt-BR:
               <<: *errors_defaults
             raw_content:
               <<: *errors_defaults
+  layouts:
+    application:
+      new_post: 'Novo Post'
+      sign_in: 'Entrar'
+      sign_out: 'Sair'
   posts:
     default: &default
       confirm_deletion: 'Deseja realmente apagar este registro'

@@ -4,13 +4,35 @@ html
     title BioritmoChallenge
     = csrf_meta_tags
     = csp_meta_tag
+
     meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    p.notice = notice
-    p.alert = alert
+    .ui.top.attached.three.item.massive.borderless.menu
+      .item
+        - if user_signed_in?
+          = link_to t('.new_post'), new_post_path, class: 'ui blue button', style: 'border-radius: unset;'
+      .item.header: h1 Le Blog
+      .item
+        - if user_signed_in?
+          = link_to t('.sign_out'), destroy_user_session_path, method: 'delete', class: 'ui violet basic button', style: 'border-radius: unset;'
+        - else
+          = link_to t('.sign_in'), new_user_session_path, class: 'ui violet basic button', style: 'border-radius: unset;'
 
-    = yield
+    .ui.container
+      - if notice || alert
+        div style='padding-top: 30px;'
+          - if notice
+            .ui.info.message
+              i.close.icon
+              = notice
+            p.notice
+          - if alert
+            .ui.warning.message
+              i.close.icon
+              = alert
+      div style='padding-top: 30px;'
+        = yield
