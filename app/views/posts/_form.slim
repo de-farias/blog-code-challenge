@@ -1,17 +1,17 @@
-= form_for @post do |f|
+= form_for @post, html: { class: 'ui form' } do |f|
   - if @post.errors.any?
     .alert.alert-danger
       - for error in @post.errors.full_messages
         p = error
 
-  div
+  .field
     = f.label :title
     = f.text_field :title, autofocus: true
 
-  div
+  .field
     = f.label :raw_content
-    = f.text_area :raw_content
+    = f.text_area :raw_content, style: 'min-height: 24em; resize: none;'
 
   div
-    button type='submit' = t('.submit')
-    = link_to t('.return'), :back
+    button.ui.button.blue type='submit' = t('.submit')
+    = link_to t('.return'), :back, class: 'ui basic grey button '
