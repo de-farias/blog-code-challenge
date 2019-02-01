@@ -18,6 +18,16 @@ pt-BR:
               <<: *errors_defaults
             raw_content:
               <<: *errors_defaults
+  time:
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%d de %B de %Y'
+      short: ! '%d de %B'
+      month_year: ! '%B/%Y'
+    order:
+    - :day
+    - :month
+    - :year
   layouts:
     application:
       new_post: 'Novo Post'
@@ -49,6 +59,8 @@ pt-BR:
       page_title: 'Novo Post'
     show:
       <<: *default
+      by: 'Por %{author}'
+      published_at: 'Publicado em %{time}'
     update:
       failed_to_update_post: 'Não foi possível editar o post'
       post_updated: 'Post editado com sucesso'
