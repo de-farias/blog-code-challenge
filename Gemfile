@@ -40,6 +40,8 @@ gem 'devise', '~> 4.5'
 
 gem 'jquery-rails', '~> 4.3'
 
+gem 'redcarpet', '~> 3.4'
+
 gem 'semantic-ui-sass', '~> 2.4', '>= 2.4.0.1'
 
 gem 'slim-rails', '~>3.2'
