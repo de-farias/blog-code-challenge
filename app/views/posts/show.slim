@@ -1,9 +1,9 @@
+h1.ui.header = @post.title
+
+= sanitize @post.html_content
+
 .ui.segment style='margin-bottom: 30px;'
   h2.ui.header
     .content
       = t('.by', author: @post.author.email)
       .sub.header = t('.published_at', time: l(@post.created_at))
-
-h1.ui.header = @post.title
-
-= sanitize @post.html_content
