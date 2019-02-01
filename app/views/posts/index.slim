@@ -1,1 +1,6 @@
-h1 List Posts
+.ui.link.items.divided
+  - @posts.each do |post|
+    = link_to post_path(post), class: 'item' do
+      .content
+        .header = post.title
+        .description = "#{t('.by', author: post.author.email)}, #{t('.published_at', time: l(post.created_at)).downcase}"

@@ -53,7 +53,9 @@ pt-BR:
       submit: 'Salvar'
     index:
       <<: *default
+      by: 'Por %{author}'
       page_title: 'Posts'
+      published_at: 'Publicado em %{time}'
     new:
       <<: *default
       page_title: 'Novo Post'
