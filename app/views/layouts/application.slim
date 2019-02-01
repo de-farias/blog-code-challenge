@@ -15,7 +15,9 @@ html
       .item
         - if user_signed_in?
           = link_to t('.new_post'), new_post_path, class: 'ui blue button', style: 'border-radius: unset;'
-      .item.header: h1 Le Blog
+      .item.header
+        = link_to root_path do
+          h1 Le Blog
       .item
         - if user_signed_in?
           = link_to t('.sign_out'), destroy_user_session_path, method: 'delete', class: 'ui violet basic button', style: 'border-radius: unset;'
