@@ -44,6 +44,8 @@ gem 'redcarpet', '~> 3.4'
 
 gem 'semantic-ui-sass', '~> 2.4', '>= 2.4.0.1'
 
+gem 'sidekiq', '~> 5.2', '>= 5.2.5'
+
 gem 'slim-rails', '~>3.2'
 
 group :development, :test do
