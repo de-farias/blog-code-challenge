@@ -13,7 +13,7 @@ module Notifications
     def event_text
       title = ActionController::Base.helpers.sanitize(target.title)
 
-      "Novo post publicado: #{title}"
+      "Novo post: #{title}"
     end
 
     def event_url

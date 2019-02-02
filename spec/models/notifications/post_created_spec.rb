@@ -14,7 +14,7 @@ RSpec.describe Notifications::PostCreated, type: :model do
     end
 
     it '#event[:text]' do
-      expect(notification.event[:text]).to eq 'Novo post publicado: Post batuta'
+      expect(notification.event[:text]).to eq 'Novo post: Post batuta'
     end
 
     it '#event[:url]' do
