@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_notifications, only: %i[index new]
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
 
@@ -6,7 +7,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    mark_notifications_as_seen!
+    set_notifications
+  end
 
   def new
     @post = Post.new
@@ -26,7 +30,10 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    mark_notifications_as_seen!
+    set_notifications
+  end
 
   def update
     @post.assign_attributes(post_params)
@@ -65,6 +72,17 @@ class PostsController < ApplicationController
 
     user_ids.each do |user_id|
       NotificationsJob.perform_later('PostCreated', @post, user_id)
+    end
+  end
+
+  def mark_notifications_as_seen!
+    current_user.notifications
+                .unseen
+                .where(target: @post)
+                .each do |notification|
+      notification.acknowledged_at ||= DateTime.now
+      notification.opened_at ||= DateTime.now
+      notification.save
     end
   end
 end

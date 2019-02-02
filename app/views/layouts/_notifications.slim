@@ -1,0 +1,8 @@
+#user-notifications.ui.dropdown style='margin-right: 20px'
+  i.bell.outline.large.icon
+  - unless @notifications.unseen_count.zero?
+    .floating.ui.blue.label = @notifications.unseen_count
+  .menu
+    .scrolling.left.menu
+      - @notifications.items.each_with_index do |item, idx|
+        = link_to item.event[:text], item.event[:url], class: "item #{'border-top' unless idx.zero?}", style: "#{'background-color: #8cc2f64d !important;' unless item.opened?}"
