@@ -36,6 +36,15 @@ RSpec.describe PostsController, type: :controller do
         post :create, params: { post: post_params }
         expect(response).to redirect_to(post_path(Post.last))
       end
+
+      it 'enqueues notification jobs' do
+        create(:user)
+        ActiveJob::Base.queue_adapter = :test
+
+        expect {
+          post :create, params: { post: post_params }
+        }.to enqueue_job(NotificationsJob)
+      end
     end
 
     context 'when things go wrong' do

@@ -16,6 +16,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(author: current_user))
 
     if @post.save
+      notify_users!
+
       flash[:notice] = t('.post_created')
       redirect_to post_path(@post)
     else
@@ -56,5 +58,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :raw_content)
+  end
+
+  def notify_users!
+    user_ids = User.where.not(id: current_user.id).pluck(:id)
+
+    user_ids.each do |user_id|
+      NotificationsJob.perform_later('PostCreated', @post, user_id)
+    end
   end
 end
