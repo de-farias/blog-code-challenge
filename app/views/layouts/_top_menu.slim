@@ -1,0 +1,10 @@
+.ui.top.attached.three.item.massive.borderless.menu
+  .item
+    - if user_signed_in?
+      = link_to t('.new_post'), new_post_path, class: 'ui blue button', style: 'border-radius: unset;'
+  .item.header
+    = link_to root_path do
+      h1 Le Blog
+  .item
+    = render 'layouts/sign_in_and_out_links'
+

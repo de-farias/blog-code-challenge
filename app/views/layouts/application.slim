@@ -11,18 +11,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    .ui.top.attached.three.item.massive.borderless.menu
-      .item
-        - if user_signed_in?
-          = link_to t('.new_post'), new_post_path, class: 'ui blue button', style: 'border-radius: unset;'
-      .item.header
-        = link_to root_path do
-          h1 Le Blog
-      .item
-        - if user_signed_in?
-          = link_to t('.sign_out'), destroy_user_session_path, method: 'delete', class: 'ui violet basic button', style: 'border-radius: unset;'
-        - else
-          = link_to t('.sign_in'), new_user_session_path, class: 'ui violet basic button', style: 'border-radius: unset;'
+    = render 'layouts/top_menu'
 
     .ui.container
       - if notice || alert
